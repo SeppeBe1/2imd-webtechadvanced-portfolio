@@ -1,3 +1,43 @@
+body {
+    margin-top: 100px;
+    display: flex;
+    justify-content: center;
+}
+
 .grid {
     display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    gap: 10px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: bold;
+    width: 1000px;
+}
+
+.red {
+    padding: 20px;
+    background-color: #f83259;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.lightblue {
+    padding: 20px;
+    background-color: #63f6f3;
+    grid-row: 1/4;
+    grid-column: 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.yellow {
+    padding: 20px;
+    background-color: #ffff04;
+    grid-row: 2/4;
+    grid-column: 4/6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
