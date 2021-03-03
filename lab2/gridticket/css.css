@@ -1,0 +1,30 @@
+.grid {
+    display: grid;
+    grid-column: 1fr 1fr;
+    grid-row: 1fr 1fr 1fr 1fr 1fr;
+}
+
+h1 {
+    grid-column: span 2;
+}
+
+h2 {
+    grid-column: span 2;
+}
+
+.QR {
+    grid-column: span 2;
+}
+
+.date {
+    border: 1px solid black;
+}
+
+.type {
+    border: 1px solid black;
+}
+
+.price {
+    grid-column: span 2;
+    border: 1px solid black;
+}
