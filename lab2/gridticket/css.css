@@ -77,42 +77,67 @@ h2 {
         background-image: url("https://images.pexels.com/photos/6243806/pexels-photo-6243806.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
         background-size: 500px;
         border: 1px solid black;
+        width: 800px;
     }
     h1 {
         grid-column: 1/4;
         grid-row: 2;
+        font-size: 60px;
         color: black;
         background-color: initial;
+        letter-spacing: 12px;
     }
     h2 {
         grid-column: 1/4;
         grid-row: 1;
         color: black;
         background-color: initial;
+        display: flex;
+        justify-content: center;
+        align-self: flex-end;
     }
     .QR {
         grid-column: 4;
-        grid-row: 1/4;
+        grid-row: 1/5;
         padding-top: 50px;
         padding-bottom: 50px;
         border: 1px solid black;
+        padding: 20px;
     }
     .date {
         grid-row: 3;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 22px;
     }
     .type {
         grid-row: 3;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 22px;
     }
     .price {
+        padding: 0;
         grid-row: 3;
         grid-column: 3;
         border: 1px solid black;
-        padding-top: 5px;
-        padding-bottom: 5px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 22px;
     }
     .desktopExtra {
         grid-column: 1/4;
+        grid-row: 4;
         display: inline;
         border: 1px solid black;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 12px;
     }
 }
