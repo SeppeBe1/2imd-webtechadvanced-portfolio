@@ -6,8 +6,9 @@ class Note {
 
     createElement(title) {
         let newNote = document.createElement("li");
+        newNote.innerHTML = title;
 
-        // HINT🤩 newNote.addEventListener('click', this.remove.bind(newNote));
+        //newNote.addEventListener('click', this.remove.bind(newNote));
 
 
         return newNote;
@@ -45,9 +46,7 @@ class App {
         //.bind lets us use this in methods
         this.txtTodo.addEventListener("keypress", this.createNote.bind(this));
 
-        // read up on .bind() -> we need to pass the current meaning of this to the eventListener
-        // when the app loads, we can show previously saved noted from localstorage
-        this.loadNotesFromStorage();
+        // this.loadNotesFromStorage();
     }
 
     loadNotesFromStorage() {
@@ -62,16 +61,17 @@ class App {
             e.preventDefault();
             //new note creating
             let note = new Note(this.txtTodo.value);
-            console.log(this.txtTodo.value);
+            if (this.txtTodo.value) {
+                //adding after // append other notes
+                note.add();
+                // note.saveToStorage();
 
-            //adding after // append other notes
-            note.add();
-            // note.saveToStorage();
-
-            //clear textfield
-            this.reset();
+                //clear textfield
+                this.reset();
+            } else {
+                //not create new element if it is empty
+            }
         }
-
     }
 
     reset() {
