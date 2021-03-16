@@ -8,7 +8,7 @@ class Note {
         let newNote = document.createElement("li");
         newNote.innerHTML = title;
 
-        //newNote.addEventListener('click', this.remove.bind(newNote));
+        newNote.addEventListener('click', this.remove.bind(newNote));
 
 
         return newNote;
@@ -31,8 +31,8 @@ class Note {
     remove() {
         // HINT🤩 the meaning of 'this' was set by bind() in the createElement function
         // in this function, 'this' will refer to the current note element
-        // .removeChild(this)
-        // remove the item from screen and from localstorage
+        taskList.removeChild(this)
+            // remove the item from screen and from localstorage
     }
 }
 
@@ -60,8 +60,8 @@ class App {
         if (e.keyCode == ENTER) {
             e.preventDefault();
             //new note creating
-            let note = new Note(this.txtTodo.value);
             if (this.txtTodo.value) {
+                let note = new Note(this.txtTodo.value);
                 //adding after // append other notes
                 note.add();
                 // note.saveToStorage();
