@@ -38,7 +38,8 @@ class App {
 
         // HINT🤩
         // pressing the enter key in the text field triggers the createNote function
-        // this.txtTodo = ???
+        this.txtTodo = document.getElementById("taskInput");
+        this.txtTodo.addEventListener("keypress", createNote(e));
         // this.txtTodo.addEventListener("keypress", this.createNote.bind(this));
         // read up on .bind() -> we need to pass the current meaning of this to the eventListener
         // when the app loads, we can show previously saved noted from localstorage
