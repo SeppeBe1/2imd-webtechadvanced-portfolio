@@ -36,14 +36,15 @@ class App {
     constructor() {
         console.log("👊🏼 The Constructor!");
 
-        // HINT🤩
-        // pressing the enter key in the text field triggers the createNote function
         this.txtTodo = document.getElementById("taskInput");
-        this.txtTodo.addEventListener("keypress", createNote(e));
-        // this.txtTodo.addEventListener("keypress", this.createNote.bind(this));
+
+        //listens to textfield if a key is pressed inside
+        //.bind lets us use this in methods
+        this.txtTodo.addEventListener("keypress", this.createNote.bind(this));
+
         // read up on .bind() -> we need to pass the current meaning of this to the eventListener
         // when the app loads, we can show previously saved noted from localstorage
-        // this.loadNotesFromStorage();
+        this.loadNotesFromStorage();
     }
 
     loadNotesFromStorage() {
@@ -52,13 +53,21 @@ class App {
     }
 
     createNote(e) {
+            e.preventDefault();
+            let enter = 13;
+
+            if (e.keyCode == enter) {
+                console.log("Het maakt aan");
+
+            }
+
+        }
         // this function should create a new note by using the Note() class
         // HINT🤩
         // note.add();
         // note.saveToStorage();
         // clear the text field with .reset in this class
         // if (e.key === "Enter")
-    }
 
     reset() {
         // this function should reset the form / clear the text field
