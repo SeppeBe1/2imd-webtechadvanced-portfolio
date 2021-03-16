@@ -16,6 +16,9 @@ class Note {
     add() {
         // HINT🤩
         // this function should append the note to the screen somehow
+        let taskList = document.getElementById("taskList");
+        taskList.appendChild(newNote);
+        console.log("yee");
     }
 
     saveToStorage() {
@@ -40,7 +43,7 @@ class App {
 
         //listens to textfield if a key is pressed inside
         //.bind lets us use this in methods
-        this.txtTodo.addEventListener("keypress", this.createNote.bind(this));
+        this.txtTodo.addEventListener("keyup", this.createNote.bind(this));
 
         // read up on .bind() -> we need to pass the current meaning of this to the eventListener
         // when the app loads, we can show previously saved noted from localstorage
@@ -53,29 +56,23 @@ class App {
     }
 
     createNote(e) {
-            e.preventDefault();
-            const ENTER = 13;
+        e.preventDefault();
+        const ENTER = 13;
 
-            if (e.keyCode == ENTER) {
-                console.log("Het maakt aan");
-                //new note creating
-                let newNote = new Note;
+        if (e.keyCode == ENTER) {
+            console.log("Het maakt aan");
+            //new note creating
+            let newNote = new Note(this.txtTodo.value);
 
-                //adding after // append other notes
-                newNote.add();
-                newNote.saveToStorage();
+            //adding after // append other notes
+            //newNote.add();
+            // newNote.saveToStorage();
 
-                //clear textfield
-                newNote.reset();
-            }
-
+            //clear textfield
+            // newNote.reset();
         }
-        // this function should create a new note by using the Note() class
-        // HINT🤩
-        // note.add();
-        // note.saveToStorage();
-        // clear the text field with .reset in this class
-        // if (e.key === "Enter")
+
+    }
 
     reset() {
         // this function should reset the form / clear the text field
