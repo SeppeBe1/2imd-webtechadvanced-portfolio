@@ -17,7 +17,9 @@ class Note {
         // HINT🤩
         // this function should append the note to the screen somehow
         let taskList = document.getElementById("taskList");
-        taskList.appendChild(newNote);
+        // element goes to the created note
+        taskList.appendChild(this.element);
+
         console.log("yee");
     }
 
@@ -62,6 +64,7 @@ class App {
             e.preventDefault();
             //new note creating
             let note = new Note(this.txtTodo.value);
+            let todotext = this.txtTodo.value;
             console.log(this.txtTodo.value);
 
             //adding after // append other notes
@@ -69,14 +72,14 @@ class App {
             // note.saveToStorage();
 
             //clear textfield
-            //note.reset();
+            this.reset();
         }
 
     }
 
     reset() {
         // this function should reset the form / clear the text field
-        this.txtTodo.value = "leeg gemaakt";
+        this.txtTodo.value = "";
     }
 }
 
