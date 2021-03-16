@@ -43,7 +43,7 @@ class App {
 
         //listens to textfield if a key is pressed inside
         //.bind lets us use this in methods
-        this.txtTodo.addEventListener("keyup", this.createNote.bind(this));
+        this.txtTodo.addEventListener("keypress", this.createNote.bind(this));
 
         // read up on .bind() -> we need to pass the current meaning of this to the eventListener
         // when the app loads, we can show previously saved noted from localstorage
@@ -56,26 +56,27 @@ class App {
     }
 
     createNote(e) {
-        e.preventDefault();
         const ENTER = 13;
 
         if (e.keyCode == ENTER) {
-            console.log("Het maakt aan");
+            e.preventDefault();
             //new note creating
-            let newNote = new Note(this.txtTodo.value);
+            let note = new Note(this.txtTodo.value);
+            console.log(this.txtTodo.value);
 
             //adding after // append other notes
-            //newNote.add();
-            // newNote.saveToStorage();
+            note.add();
+            // note.saveToStorage();
 
             //clear textfield
-            // newNote.reset();
+            //note.reset();
         }
 
     }
 
     reset() {
         // this function should reset the form / clear the text field
+        this.txtTodo.value = "leeg gemaakt";
     }
 }
 
