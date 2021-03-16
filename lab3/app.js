@@ -7,10 +7,7 @@ class Note {
     createElement(title) {
         let newNote = document.createElement("li");
         newNote.innerHTML = title;
-
         newNote.addEventListener('click', this.remove.bind(newNote));
-
-
         return newNote;
     }
 
@@ -29,7 +26,7 @@ class Note {
 
         //returns array because multiple items possible in storage
         //json parse to object
-        const arrayNotes = JSON.parse(localStorage.getItem('notes'));
+        let arrayNotes = JSON.parse(localStorage.getItem('notes'));
         //adds latest to end of array
         arrayNotes.push(this.title);
         //object back to string
@@ -44,6 +41,13 @@ class Note {
         // in this function, 'this' will refer to the current note element
         taskList.removeChild(this);
         // remove the item from screen and from localstorage
+        let arrayNotes = JSON.parse(localStorage.getItem('notes'));
+        //searches index where key from notes from what is saved
+        let index = getLocalStorage.findIndex(note => note == title);
+        //searches index and removes it
+        arrayNotes.splice(index, 1);
+        //put rest back into storage
+        localStorage.setItem('notes', JSON.stringify(arrayNotes));
     }
 }
 
@@ -57,12 +61,20 @@ class App {
         //.bind lets us use this in methods
         this.txtTodo.addEventListener("keypress", this.createNote.bind(this));
 
-        // this.loadNotesFromStorage();
+        this.loadNotesFromStorage();
     }
 
     loadNotesFromStorage() {
         // HINT🤩
         // load all notes from storage here and add them to the screen
+        let arrayNotes = JSON.parse(localStorage.getItem('notes'));
+
+        //for every note in storage create it back again if not empty
+        if (notes !== null)
+            arrayNotes.foreach(noteItem => {
+                let note = new Note(noteItem);
+                note.add();
+            });
     }
 
     createNote(e) {
@@ -70,17 +82,10 @@ class App {
 
         if (e.keyCode == ENTER) {
             e.preventDefault();
-            //new note creating
-            if (this.txtTodo.value) {
-                let note = new Note(this.txtTodo.value);
-                //adding after // append other notes
-                note.add();
-                note.saveToStorage();
-
-                //clear textfield
-            } else {
-                //not create new element if it is empty
-            }
+            let note = new Note(this.txtTodo.value);
+            //adding after / append other notes
+            note.add();
+            note.saveToStorage();
             this.reset();
         }
     }
