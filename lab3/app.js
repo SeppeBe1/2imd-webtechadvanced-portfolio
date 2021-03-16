@@ -54,11 +54,19 @@ class App {
 
     createNote(e) {
             e.preventDefault();
-            let enter = 13;
+            const ENTER = 13;
 
-            if (e.keyCode == enter) {
+            if (e.keyCode == ENTER) {
                 console.log("Het maakt aan");
+                //new note creating
+                let newNote = new Note;
 
+                //adding after // append other notes
+                newNote.add();
+                newNote.saveToStorage();
+
+                //clear textfield
+                newNote.reset();
             }
 
         }
