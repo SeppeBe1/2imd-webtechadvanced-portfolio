@@ -26,13 +26,24 @@ class Note {
         // HINT🤩
         // localStorage only supports strings, not arrays
         // if you want to store arrays, look at JSON.parse and JSON.stringify
+
+        //returns array because multiple items possible in storage
+        //json parse to object
+        const arrayNotes = JSON.parse(localStorage.getItem('notes'));
+        //adds latest to end of array
+        arrayNotes.push(this.title);
+        //object back to string
+        localStorage.setItem('notes', JSON.stringify(arrayNotes));
+
+
+
     }
 
     remove() {
         // HINT🤩 the meaning of 'this' was set by bind() in the createElement function
         // in this function, 'this' will refer to the current note element
-        taskList.removeChild(this)
-            // remove the item from screen and from localstorage
+        taskList.removeChild(this);
+        // remove the item from screen and from localstorage
     }
 }
 
@@ -64,13 +75,13 @@ class App {
                 let note = new Note(this.txtTodo.value);
                 //adding after // append other notes
                 note.add();
-                // note.saveToStorage();
+                note.saveToStorage();
 
                 //clear textfield
-                this.reset();
             } else {
                 //not create new element if it is empty
             }
+            this.reset();
         }
     }
 
