@@ -19,8 +19,6 @@ class Note {
         let taskList = document.getElementById("taskList");
         // element goes to the created note
         taskList.appendChild(this.element);
-
-        console.log("yee");
     }
 
     saveToStorage() {
@@ -64,7 +62,6 @@ class App {
             e.preventDefault();
             //new note creating
             let note = new Note(this.txtTodo.value);
-            let todotext = this.txtTodo.value;
             console.log(this.txtTodo.value);
 
             //adding after // append other notes
