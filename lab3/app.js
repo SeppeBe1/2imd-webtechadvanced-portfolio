@@ -15,6 +15,7 @@ class Note {
         // HINT🤩
         // this function should append the note to the screen somehow
         let taskList = document.getElementById("taskList");
+
         // element goes to the created note
         taskList.appendChild(this.element);
     }
@@ -27,8 +28,10 @@ class Note {
         //returns array because multiple items possible in storage
         //json parse to object
         let arrayNotes = JSON.parse(localStorage.getItem('notes')) || [];
+
         //adds latest to end of array
         arrayNotes.push(this.title);
+
         //object back to string
         localStorage.setItem('notes', JSON.stringify(arrayNotes));
 
@@ -40,12 +43,17 @@ class Note {
         // HINT🤩 the meaning of 'this' was set by bind() in the createElement function
         // in this function, 'this' will refer to the current note element
         taskList.removeChild(this);
+
         // remove the item from screen and from localstorage
         let arrayNotes = JSON.parse(localStorage.getItem('notes')) || [];
+
         //searches index where key from notes from what is saved
-        let index = getLocalStorage.findIndex(note => note == title);
+        let noteText = this.innerHTML;
+        let index = arrayNotes.indexOf(noteText);
+
         //searches index and removes it
         arrayNotes.splice(index, 1);
+
         //put rest back into storage
         localStorage.setItem('notes', JSON.stringify(arrayNotes));
     }
@@ -53,8 +61,6 @@ class Note {
 
 class App {
     constructor() {
-        console.log("👊🏼 The Constructor!");
-
         this.txtTodo = document.getElementById("taskInput");
 
         //listens to textfield if a key is pressed inside
@@ -65,7 +71,6 @@ class App {
     }
 
     loadNotesFromStorage() {
-        // HINT🤩
         // load all notes from storage here and add them to the screen
         let arrayNotes = JSON.parse(localStorage.getItem('notes'));
 
@@ -77,8 +82,6 @@ class App {
                 note.add();
 
             }
-
-
     }
 
     createNote(e) {
