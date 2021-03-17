@@ -1,7 +1,7 @@
 class Note {
     constructor(title) {
         this.title = title;
-        this.element = this.createElement(title);
+        this.element = this.createElement(this.title);
     }
 
     createElement(title) {
@@ -26,7 +26,7 @@ class Note {
 
         //returns array because multiple items possible in storage
         //json parse to object
-        let arrayNotes = JSON.parse(localStorage.getItem('notes'));
+        let arrayNotes = JSON.parse(localStorage.getItem('notes')) || [];
         //adds latest to end of array
         arrayNotes.push(this.title);
         //object back to string
@@ -41,7 +41,7 @@ class Note {
         // in this function, 'this' will refer to the current note element
         taskList.removeChild(this);
         // remove the item from screen and from localstorage
-        let arrayNotes = JSON.parse(localStorage.getItem('notes'));
+        let arrayNotes = JSON.parse(localStorage.getItem('notes')) || [];
         //searches index where key from notes from what is saved
         let index = getLocalStorage.findIndex(note => note == title);
         //searches index and removes it
@@ -70,7 +70,7 @@ class App {
         let arrayNotes = JSON.parse(localStorage.getItem('notes'));
 
         //for every note in storage create it back again if not empty
-        if (notes !== null)
+        if (arrayNotes !== null)
             arrayNotes.foreach(noteItem => {
                 let note = new Note(noteItem);
                 note.add();
