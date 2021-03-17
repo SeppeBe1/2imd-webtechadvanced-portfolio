@@ -71,10 +71,14 @@ class App {
 
         //for every note in storage create it back again if not empty
         if (arrayNotes !== null)
-            arrayNotes.foreach(noteItem => {
+            for (let i = 0; i < arrayNotes.length; i++) {
+                let noteItem = arrayNotes[i];
                 let note = new Note(noteItem);
                 note.add();
-            });
+
+            }
+
+
     }
 
     createNote(e) {
