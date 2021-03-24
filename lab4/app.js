@@ -1,7 +1,7 @@
 class App {
     constructor() {
-        // this.getWeather();
-        this.getLotrChar();
+        this.getWeather();
+        // this.getLotrChar();
 
     }
 
@@ -16,7 +16,13 @@ class App {
             })
             .then((json) => {
                 let weather = json.data[0].weather.description;
-                console.log(weather);
+                if (/clear/i.test(weather)) {
+                    document.querySelector("#what").innerHTML = "Go on vacation to the shire"
+                    console.log("klaar");
+                } else if (/rain/i.test(weather)) {
+                    document.querySelector("#what").innerHTML = "Have fun and watch lord of the rings on Netflix"
+                    console.log("regen");
+                }
             })
             .catch(error => {
                 console.log(error);
