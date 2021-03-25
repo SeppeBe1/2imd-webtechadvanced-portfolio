@@ -15,7 +15,6 @@ class App {
                 return response.json();
             })
             .then((json) => {
-                console.log(json);
                 let weather = json.data[0].weather.description;
                 if (/clear/i.test(weather) || /cloud/i.test(weather)) {
                     document.querySelector("#what").innerHTML = "Go on vacation to the shire"
