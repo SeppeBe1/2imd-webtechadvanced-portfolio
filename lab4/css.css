@@ -1,3 +1,7 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
 #ad {
     width: 336px;
     height: 280px;
@@ -5,4 +9,29 @@
     margin-left: auto;
     margin-right: auto;
     margin-top: 50px;
+    background-image: url("res/hobbiton.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+h1 {
+    text-align: center;
+    font-size: 25px;
+    color: black;
+}
+
+img {
+    width: auto;
+    height: 150px;
+    padding-left: 200px;
+    padding-top: 30px;
+    grid-row: 2;
+}
+
+p {
+    font-size: 30px;
+    grid-row: 3;
+    margin-top: -10px;
 }

@@ -1,7 +1,7 @@
 class App {
     constructor() {
         this.getWeather();
-        // this.getLotrChar();
+        this.getLotrChar();
 
     }
 
@@ -15,12 +15,15 @@ class App {
                 return response.json();
             })
             .then((json) => {
+                console.log(json);
                 let weather = json.data[0].weather.description;
-                if (/clear/i.test(weather)) {
+                if (/clear/i.test(weather) || /cloud/i.test(weather)) {
                     document.querySelector("#what").innerHTML = "Go on vacation to the shire"
+                    document.querySelector("#ad").style.backgroundImage = "url('res/hobbiton.jpg')";
                     console.log("klaar");
                 } else if (/rain/i.test(weather)) {
                     document.querySelector("#what").innerHTML = "Have fun and watch lord of the rings on Netflix"
+                    document.querySelector("#ad").style.backgroundImage = "url('res/fellowship.jpg')";
                     console.log("regen");
                 }
             })
@@ -30,10 +33,10 @@ class App {
     }
 
     getLotrChar() {
-        let characters = [];
-        let randomChar = Math.floor(Math.random() * 11);
+
+        // 12(precious) 149(take them down) 738(for gondor!) 536(what of the wizard)
         //  https://cors-anywhere.herokuapp.com/
-        let url = `https://cors-anywhere.herokuapp.com/https://the-one-api.dev/v2/character?race=Hobbit`;
+        let url = `https://cors-anywhere.herokuapp.com/https://the-one-api.dev/v2/quote/`;
         fetch(url, {
                 method: 'get',
                 contentType: 'application/json',
@@ -45,7 +48,31 @@ class App {
                 return response.json();
             })
             .then((json) => {
-                console.log(json);
+                let randomChar = Math.floor(Math.random() * 4);
+                let dialogs = [12, 149, 738, 536]
+                let quote = json.docs[dialogs[randomChar]].dialog;
+                switch (randomChar) {
+                    case 0:
+                        document.querySelector("#fellowship").src = "res/smeagol.png";
+                        document.querySelector("#quote").innerHTML = quote;
+                        console.log(quote);
+                        break;
+                    case 1:
+                        document.querySelector("#fellowship").src = "res/sam.png";
+                        document.querySelector("#quote").innerHTML = quote;
+                        console.log(quote);
+                        break;
+                    case 2:
+                        document.querySelector("#fellowship").src = "res/aragorn.png";
+                        document.querySelector("#quote").innerHTML = quote;
+                        console.log(quote);
+                        break;
+                    case 3:
+                        document.querySelector("#fellowship").src = "res/gandalf.png";
+                        document.querySelector("#quote").innerHTML = quote;
+                        console.log(quote);
+                        break;
+                }
                 // let weather = json.data[0].weather.description;
                 // console.log(json);
             })
