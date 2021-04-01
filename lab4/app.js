@@ -53,29 +53,24 @@ class App {
                     case 0:
                         document.querySelector("#fellowship").src = "res/smeagol.png";
                         document.querySelector("#quote").innerHTML = quote;
-                        console.log(quote);
                         break;
                     case 1:
                         document.querySelector("#fellowship").src = "res/sam.png";
                         document.querySelector("#quote").innerHTML = quote;
-                        console.log(quote);
                         break;
                     case 2:
                         document.querySelector("#fellowship").src = "res/aragorn.png";
                         document.querySelector("#quote").innerHTML = quote;
-                        console.log(quote);
                         break;
                     case 3:
                         document.querySelector("#fellowship").src = "res/gandalf.png";
                         document.querySelector("#quote").innerHTML = quote;
-                        console.log(quote);
                         break;
                 }
-                // let weather = json.data[0].weather.description;
-                // console.log(json);
+
             })
             .catch(error => {
-                // console.log(error);
+                console.log(error);
             });;
     }
 }
