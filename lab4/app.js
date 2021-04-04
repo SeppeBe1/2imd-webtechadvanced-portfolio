@@ -19,10 +19,12 @@ class App {
                 if (/clear/i.test(weather) || /cloud/i.test(weather)) {
                     document.querySelector("#what").innerHTML = "Go on vacation to the shire"
                     document.querySelector("#ad").style.backgroundImage = "url('res/hobbiton.jpg')";
+                    document.querySelector("#link").href = "https://www.nztravelorganiser.com/stay-hobbit-hole-new-zealand/";
 
                 } else if (/rain/i.test(weather)) {
                     document.querySelector("#what").innerHTML = "Have fun and watch lord of the rings on Netflix"
                     document.querySelector("#ad").style.backgroundImage = "url('res/fellowship.jpg')";
+                    document.querySelector("#link").href = "https://www.netflix.com/browse";
                 }
             })
             .catch(error => {
