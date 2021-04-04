@@ -22,6 +22,10 @@ h1 {
     color: black;
 }
 
+a {
+    text-decoration: none;
+}
+
 img {
     width: auto;
     height: 150px;
